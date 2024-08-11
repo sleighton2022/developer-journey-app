@@ -38,3 +38,4 @@ test('has title', async ({ page }) => {
   const player = await firstTile.getByTestId('usericon');
   await expect(player).toBeVisible();
 });
+
