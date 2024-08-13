@@ -1,4 +1,3 @@
-import {useGetUserQuery} from "src/redux/apiSlice";
 import React from "react";
 import {
     Listbox,
@@ -8,13 +7,13 @@ import {Textarea} from "@nextui-org/input";
 import {Button} from "@nextui-org/button";
 
 export default function ReportIncident() {
-    const {
+    /*const {
         data: user,
         isLoading,
         isSuccess,
         isError,
         error
-    } = useGetUserQuery();
+    } = useGetUserQuery();*/
 
     return (
         <section className="bg-slate-800 text-slate-100 rounded-l-xl p-8 col-span-3 space-y-4">
