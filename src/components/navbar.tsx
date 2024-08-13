@@ -31,6 +31,7 @@ export default function Navbar() {
   const navigation = [
     { name: 'Home 222', href: '/' },
     { name: 'Mission History 333', href: '/mission-history' },
+    { name: 'Report Incident', href: '/report-incident-page' },
   ].map((route: any) => ({
     ...route,
     current: router.pathname === route.href,
@@ -39,7 +40,7 @@ export default function Navbar() {
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }: { open: any }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8  border-2">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -74,7 +75,7 @@ export default function Navbar() {
                         )}
                         aria-current={item.current ? 'page' : undefined}
                       >
-                        {item.name}
+                        {item.name} XXXBBB
                       </Link>
                     ))}
                   </div>
@@ -121,7 +122,7 @@ export default function Navbar() {
                   )}
                   aria-current={item.current ? 'page' : undefined}
                 >
-                  {item.name}
+                  {item.name} BBB
                 </Disclosure.Button>
               ))}
             </div>

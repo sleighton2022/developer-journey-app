@@ -1,3 +1,4 @@
+const {nextui} = require('@nextui-org/theme');
 /**
  * Copyright 2023 Google LLC
  *
@@ -18,9 +19,10 @@
 module.exports = {
   content: [
     "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@nextui-org/theme/dist/components/(listbox|divider).js"
   ],
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [nextui()],
 }

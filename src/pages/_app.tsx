@@ -27,13 +27,14 @@ export default function App({
   pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <>
-      <Head>
+     <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <SessionProvider session={session}>
         <Provider store={store}>
           <div className="flex flex-col h-screen justify-between">
             <Navbar />
+              <div className="border-2">asasa</div>
             <Component {...pageProps} />
             <Footer />
           </div>

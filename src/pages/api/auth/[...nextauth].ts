@@ -32,7 +32,7 @@ export const authOptions: AuthOptions = {
 
         const username = credentials.username;
         const user = { id: username, name: username };
-
+        console.log(`*** username: ${username}`)
         if (user) {
           return user;
         } else {

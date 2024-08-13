@@ -21,7 +21,7 @@ export default function SignInRecommendation() {
       <h1 className="text-3xl font-bold text-slate-100 float-right text-right">
         <ArrowUpIcon className="h-32 w-32 float-right" aria-hidden="true" />
         <br />
-        Welcome to Developer Journey App.
+        Welcome to Developer Journey App qwqw.
         <br />
         Sign in to play!
       </h1>

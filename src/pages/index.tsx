@@ -23,12 +23,12 @@ import Inventory from "../components/inventory";
 import Head from "next/head";
 import SignInRecommendation from "src/components/sign-in-recommendation";
 
-export default function Home() {
+export default function Zzz() {
   const { status } = useSession();
   return (
     <>
       <Head>
-        <title>Home | Developer Journey App 333</title>
+        <title>Home | Developer Journey App 444</title>
       </Head>
       <main>
         {status === "authenticated" ? (

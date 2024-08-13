@@ -29,7 +29,7 @@ export default function Component() {
         <div className={`space-y-4 ${allItemsCollected ? 'opacity-100' : 'h-0 opacity-0'}`}>
           <div className={`space-y-4 transition-all ease-in-out delay-75 duration-1000 ${allItemsCollected ? 'opacity-100' : 'opacity-0'}`}>
             <p>
-              Huzzah Traveler! You have gathered all the necessary technologies and the treasure has been revealed!
+              Huzzah222 qwqwTraveler! You have gathered all the necessary technologies and the treasure has been revealed!
             </p>
             <p>
               Remember to collect the Cloud treasure to complete your mission.
@@ -68,8 +68,8 @@ export default function Component() {
         <div className={`space-y-4 ${allItemsCollected ? 'h-0 opacity-0' : 'opacity-100'}`}>
           <div className={`space-y-4 transition-opacity ease-in-out delay-75 duration-1000 ${allItemsCollected ? 'opacity-0' : 'opacity-100'}`}>
             <p>
-              Hello Traveler, you have started your journey in exploring Google Cloud.
-              Your environment holds valuable technologies that you must gather to complete your mission.
+              Hello Traveler 1212, you have started your journey in exploring Google Cloud.
+              Your environment holds valuable technologies that you must gather to complete your mission. 1212
               To complete the mission, you must gather the technologies used to
               {' '}
               <span className='font-bold text-lg text-slate-100'>{currentMission.title}</span>
@@ -79,7 +79,7 @@ export default function Component() {
               Click a tile adjacent to you to explore your environment.
             </p>
             <p className='hidden sm:block'>
-              Use the
+              Use the 1212
               {' '}
               <span className='font-bold text-lg text-slate-100'>Arrow Keys</span>
               {' '}
@@ -87,7 +87,7 @@ export default function Component() {
               {' '}
               <span className='font-bold text-lg text-slate-100'>Enter Key</span>
               {' '}
-              to collect a technology.
+              to collect a technology. aaa
             </p>
             <p>
               Good luck,
