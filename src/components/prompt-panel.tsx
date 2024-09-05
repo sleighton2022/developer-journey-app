@@ -87,7 +87,7 @@ export default function Component() {
               {' '}
               <span className='font-bold text-lg text-slate-100'>Enter Key</span>
               {' '}
-              to collect a technology. aaa
+              to collect a technology.
             </p>
             <p>
               Good luck,

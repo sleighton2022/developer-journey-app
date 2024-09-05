@@ -32,9 +32,8 @@ export default function App({
       </Head>
       <SessionProvider session={session}>
         <Provider store={store}>
-          <div className="flex flex-col h-screen justify-between">
+          <div className="flex flex-col h-screen">
             <Navbar />
-              <div className="border-2">asasa</div>
             <Component {...pageProps} />
             <Footer />
           </div>

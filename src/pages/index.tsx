@@ -24,14 +24,15 @@ import Head from "next/head";
 import SignInRecommendation from "src/components/sign-in-recommendation";
 
 export default function Zzz() {
-  const { status } = useSession();
+  const { data: session } = useSession();
+  console.log('getting session index: ' + JSON.stringify(session))
   return (
     <>
       <Head>
-        <title>Home | Developer Journey App 444</title>
+        <title>Home | Developer Journey App 555</title>
       </Head>
       <main>
-        {status === "authenticated" ? (
+        {session?.user?.name ? (
           <div className="grid grid-cols-1 sm:grid-cols-5 gap-3">
             <PromptPanel />
             <TileBoard />

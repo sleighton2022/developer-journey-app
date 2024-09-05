@@ -15,6 +15,7 @@
  */
 import { Firestore } from "@google-cloud/firestore";
 import { User } from "src/models/User";
+import {Incident} from "src/models/Incident";
 
 export class Database {
   private db: Firestore;
@@ -62,11 +63,37 @@ export class Database {
     const { completedMissions } = await this.getUser({ username });
     const updatedMissions = [...completedMissions, missionId]
 
-
     return this.setUser({
       username,
       completedMissions: updatedMissions,
     });
+  }
+
+  async addIncident({ phone, incident }: { phone:string, incident: string }) : Promise<any> {
+    const incidentsDoc = this.db.collection('incidents').doc(phone);
+
+    const snapshot = await incidentsDoc.get();
+    const oldIncidents = snapshot.data()?.incidents || [];
+    const updatedMissions = [...oldIncidents, incident]
+    //let phone2 = incident.incident.phone;
+    return incidentsDoc.set({
+      //phone2,
+      phone,
+      incidents: updatedMissions,
+    }, { merge: true });
+  }
+
+  async listIncidents() : Promise<any> {
+    /*this.db.collection('incidents').get().then(querySnapshot => {
+      querySnapshot.docs.forEach(snapshot => {
+        snapshot.ref.delete();
+      })
+    })*/
+
+    const snapshot = await this.db.collection('incidents').get();
+    const oldIncidents = snapshot.docs.map(doc => doc.data());
+    return oldIncidents.reduce((accumulator, value) => accumulator.concat(value.incidents), []);
+    ;
   }
 
   /**

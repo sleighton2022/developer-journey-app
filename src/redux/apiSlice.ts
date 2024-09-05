@@ -19,6 +19,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { Mission } from 'src/models/Mission'
 import { User } from 'src/models/User'
 import { startMission } from './gameSlice';
+import {Incident} from "src/models/Incident";
 
 // Define our single API slice object
 export const apiSlice = createApi({
@@ -26,9 +27,10 @@ export const apiSlice = createApi({
   reducerPath: 'api',
   // All of our requests will have URLs starting with '/api'
   baseQuery: fetchBaseQuery({ baseUrl: '/api' }),
-  tagTypes: ['User'],
+  tagTypes: ['User', 'Incident'],
   // The "endpoints" represent operations and requests for this server
   endpoints: builder => ({
+
     // The `getUser` endpoint is a "query" operation that returns data
     getUser: builder.query<User, void>({
       // The URL for the request is '/api/user', this is a GET request
@@ -38,6 +40,7 @@ export const apiSlice = createApi({
       },
       providesTags: ['User'],
     }),
+
     addCompletedMission: builder.mutation({
       // The URL for the request is '/api/user', this is a POST request
       query: ({mission}: {mission: Mission}) => ({
@@ -48,8 +51,33 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ['User']
     }),
+
+    addIncident: builder.mutation({
+      // The URL for the request is '/api/incident', this is a POST request
+      //console.log(``);
+      query: (incident: {incident: Incident}) => ({
+        url: '/incident',
+        method: 'POST',
+        body: incident,
+        invalidatesTags: ['Incident']
+      }),
+    }),
+
+    getIncidents: builder.query<Incident[], void>({
+      query: () => '/list_incidents',
+      providesTags: ['Incident'],
+    }),
+
+    sendCode: builder.query<boolean, void>({
+      query: () => '/send-code',
+    }),
+
+    verifyCode: builder.query<boolean, void>({
+      query: () => '/verify-code',
+    }),
+
   })
 })
 
 // Export the auto-generated hook for the `getUser` query endpoint
-export const { useGetUserQuery, useAddCompletedMissionMutation } = apiSlice
+export const { useGetUserQuery, useAddCompletedMissionMutation, useAddIncidentMutation, useGetIncidentsQuery, useSendCodeQuery, useVerifyCodeQuery } = apiSlice

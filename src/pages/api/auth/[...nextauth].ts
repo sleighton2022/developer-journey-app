@@ -15,25 +15,44 @@
  */
 import NextAuth, {AuthOptions} from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-
+import {Twilio} from "twilio";
 
 export const authOptions: AuthOptions = {
   providers: [
     CredentialsProvider({
       credentials: {
-        username: {label: "Username", type: "text", placeholder: "Username"},
+        username: {label: "Verification code", type: "text", placeholder: "xxxxxx"},
       },
-      async authorize(credentials) {
-        if (!credentials || credentials.username.length < 1) {
+      async authorize(credentials, req) {
+        /*if (!credentials || credentials.username.length < 1) {
           // Display an  error will be displayed advising the user to check
           // their details.
           return null;
+        }*/
+
+        const phone = req.body.phone;
+        const code = req.body.code;
+        //const user = { phone: phone, code: code };
+        console.log(`*** verificationCode: ${code}`)
+        const accountSid = process.env.TWILIO_ACCOUNT_SID;
+        const serviceSid = process.env.TWILIO_SERVICE_SID as string;
+        const authToken = process.env.TWILIO_AUTH_TOKEN;
+        const client = new Twilio(accountSid, authToken);
+        /*const verificationCheck = await client.verify.v2
+            .services(serviceSid)
+            .verificationChecks.create({ to: phone, code });
+        */
+        const verificationCheck = {status: 'approved'}
+        if (verificationCheck.status === 'approved') {
+          // TODO get user roles
+          //const sessionData = {user: user, roles: [], authenticated: true}
+          //return sessionData
+          return { id: phone, name: phone };
+        } else {
+          return null;
         }
 
-        const username = credentials.username;
-        const user = { id: username, name: username };
-        console.log(`*** username: ${username}`)
-        if (user) {
+        /*if (user) {
           return user;
         } else {
           // Display an  error will be displayed advising the user to check
@@ -41,7 +60,7 @@ export const authOptions: AuthOptions = {
           return null;
           // Or reject this callback with an Error to send the user to the error
           // page with the error message as a query parameter
-        }
+        }*/
       }
     }),
   ],

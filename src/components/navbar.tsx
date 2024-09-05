@@ -29,9 +29,8 @@ export default function Navbar() {
   const { data: session } = useSession();
 
   const navigation = [
-    { name: 'Home 222', href: '/' },
-    { name: 'Mission History 333', href: '/mission-history' },
     { name: 'Report Incident', href: '/report-incident-page' },
+    { name: 'List Incidents', href: '/list-incidents-page' },
   ].map((route: any) => ({
     ...route,
     current: router.pathname === route.href,
@@ -54,15 +53,6 @@ export default function Navbar() {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center">
-                  <Image
-                    src='/Google_Cloud_logo.svg'
-                    alt='Google Cloud Logo'
-                    width='80'
-                    height='80'
-                    className='block h-8 w-auto'
-                  />
-                </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
@@ -75,7 +65,7 @@ export default function Navbar() {
                         )}
                         aria-current={item.current ? 'page' : undefined}
                       >
-                        {item.name} XXXBBB
+                        {item.name}
                       </Link>
                     ))}
                   </div>
@@ -92,7 +82,6 @@ export default function Navbar() {
                     {session.user.name.length < 30 ? (session.user.name) : (session.user.name.substring(0,28) + '...')}
                   </span>
                   <button
-                    className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
                     onClick={() => signOut()}
                   >
                     Sign Out
@@ -100,7 +89,6 @@ export default function Navbar() {
                 </>
               ) : (
                 <button
-                  className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
                   onClick={() => signIn()}
                 >
                   Sign in
@@ -122,7 +110,7 @@ export default function Navbar() {
                   )}
                   aria-current={item.current ? 'page' : undefined}
                 >
-                  {item.name} BBB
+                  {item.name}
                 </Disclosure.Button>
               ))}
             </div>

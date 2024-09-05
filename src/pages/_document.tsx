@@ -16,6 +16,7 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
+    console.log('getting session doc')
   return (
     <Html lang="en">
       <Head>
